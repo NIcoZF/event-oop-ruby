@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   attr_accessor :start_date
 
@@ -5,27 +7,28 @@ class Event
     @start_date = Time.parse(start_date)
     @duration = duration
     @title = title
-    @attendees = attendees.join(", ")
+    @attendees = attendees.join(', ')
   end
 
   def postpone_24h
-    @start_date += (60 * 60 *24)
+    @start_date += (60 * 60 * 24)
   end
-  
+
   def end_date
-    return @start_date + (@duration * 60)
+    @start_date + (@duration * 60)
   end
 
   def is_past?
-    return @start_date < Time.now
+    @start_date < Time.now
   end
+
   def is_future?
-    return @start_date > Time.now
+    @start_date > Time.now
     # !self.is_past?
   end
 
   def is_soon?
-    return @start_date < (Time.now + 30*60)
+    @start_date < (Time.now + 30 * 60)
   end
 
   def to_s
@@ -34,5 +37,4 @@ class Event
     puts "> Durée : #{@duration}"
     puts "> Invités : #{@attendees}"
   end
-  
 end

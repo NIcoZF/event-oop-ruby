@@ -15,8 +15,8 @@ class User
   end
 
   def self.find_by_email(email)
-    @@all_users.each do |x|
-      if x.email == email
+    @@all_users.each do |user|
+      if user.email == email
         return x
       else
         puts 'Unknwon user'
